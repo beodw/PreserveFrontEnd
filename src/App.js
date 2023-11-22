@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login';
+import SwipeView from './components/SwipeView';
+import { NextUIProvider } from "@nextui-org/react";
+import { useEffect } from 'react';
+import { PostData, AuthUrl } from './components/utils/http';
 
 function App() {
+  useEffect(() => {
+      PostData(AuthUrl, {
+          // "location": "Angel Lane",
+          // "fullName": "Test test",
+          "password": "12345656",
+          // "studentIDNumber": "3442344324",
+          // "university": "King's College London",
+          // "phoneNumber": "122342434",
+          "email": "test@email.com",
+        }
+      );
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NextUIProvider>
+      <SwipeView />
+    </NextUIProvider>
   );
 }
 
